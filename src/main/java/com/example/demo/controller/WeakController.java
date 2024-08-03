@@ -5,10 +5,7 @@ import com.example.demo.util.SynchronizedByKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,7 @@ public class WeakController {
     List<Object> links = new ArrayList<>();
 
     @ResponseBody
-    @RequestMapping(value = "/put/{orderId}")
+    @PutMapping(value = "/put/{orderId}")
     public Map<String, Object> put(@PathVariable("orderId") String orderId) {
 
         Object value = new Object();
@@ -39,7 +36,7 @@ public class WeakController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/gc")
+    @PostMapping(value = "/gc")
     public Map<String, Object> gc() {
 
         System.gc();
@@ -51,7 +48,7 @@ public class WeakController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/show")
+    @GetMapping(value = "/show")
     public Map<String, Object> show() {
 
         logInfo();

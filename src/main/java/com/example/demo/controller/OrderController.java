@@ -5,10 +5,7 @@ import com.example.demo.util.SynchronizedByKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -23,7 +20,7 @@ public class OrderController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/process/{orderId}")
+    @GetMapping(value = "/process/{orderId}")
     public Map<String, Object> process(@PathVariable("orderId") String orderId) {
 
         synchronizedByKey.exec(orderId, () -> {

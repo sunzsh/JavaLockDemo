@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.util.ResponseMapBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -20,7 +17,7 @@ public class LockerController {
     private Object obj = new Object();
 
     @ResponseBody
-    @RequestMapping(value = "/produce/{id}")
+    @GetMapping(value = "/produce/{id}")
     public Map<String, Object> produce(@PathVariable("id") String id) throws InterruptedException {
 
 
@@ -34,7 +31,7 @@ public class LockerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/notify")
+    @GetMapping(value = "/notify")
     public Map<String, Object> cmd_notify() {
 
         synchronized (obj) {
@@ -45,7 +42,7 @@ public class LockerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/notifyAll")
+    @GetMapping(value = "/notifyAll")
     public Map<String, Object> cmd_notifyAll() {
 
         synchronized (obj) {
